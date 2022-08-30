@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@200;700&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #f3f3f3;
+    font-family: 'Josefin Sans', sans-serif;
+}
+h1,h2{
+    text-align: center;
+    padding: .3em 0;
+}
+.box--title-color{
+    background-color: rgb(225, 221, 225);
+}
+.box--banner{
+    width: 100vw;
+    height: 70vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-image: url('./assets/banner.jpg');
+}
+#randomDogs, .box--favoritesPics, .box--footer {
+    width: 100vw;
+    min-width: 360px;
+    height: max-content;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+}
+
+.box--randomDogs-pics, .box--footer{
+    width: 100%;
+    min-width: 360px;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+#favoritesDogs{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+#favoritesDogs article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    align-items: center;
+}
+
+#favoritesDogs article button{
+    margin-top: 1em;
+    align-self: center;
+    width: 200px;
+    padding: .7em;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #413285;
+    color: #f3f3f3;
+    font-weight: bold;
+}
+.box--randomDogs-pics article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+}
+article img{
+    height: 200px;
+}
+article .favDogIn{
+    margin-top: 1em;
+    align-self: center;
+    width: 100px;
+    padding: .7em;
+    border-radius: 20px;
+    outline: none;
+    background-color: transparent;
+    color: #000;
+    font-weight: bold;
+}
+
+article .favDogIn:hover{
+    background-color: #a495e7;
+}
+article .favDogIn:active{
+    background-color: #5132da;
+}
+
+
+#randomDogs .load{
+    margin-top: 4em;
+    align-self: center;
+    width: 200px;
+    padding: 1em;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    background-color: #413285;
+    color: #f3f3f3;
+    font-weight: bold;
+}
+#randomDogs .load:hover{
+    padding: 1.2em;
+    background-color: #594a9e;
+    color: #ece0e9;
+}
+.box--uploadPics{
+    background-color: #413285;
+    height: 300px;
+    width: 100vw;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+}
+#uploadingForm{
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#uploadingForm button{
+    width: 200px;
+    margin: 2em 0;
+    background-color: #e9be52;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+    padding: 1em 2em;
+    font-weight: bold;
+}
+.box--footer{
+   background-color: #594a9e;
+   color: #f3f3f3;
+}
+@media (max-width: 600px) {
+    .box--randomDogs-pics {
+        flex-direction: column;
+    } 
+   .box--randomDogs-pics article{
+        margin-top: 3em;
+    }
+    #favoritesDogs{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(300px, auto);
+    }
+}

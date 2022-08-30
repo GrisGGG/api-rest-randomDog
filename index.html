@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/8a97c32dfc.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Perritos aleatorios</title>
+  </head>
+  <body>
+    <h1 class="box--title-color">
+      Random <span><i class="fa-solid fa-paw"></i></span> Dog
+    </h1>
+    <section class="box--banner"></section>
+    <section id="randomDogs">
+      <span id="error"> </span>
+      <h2>Perritos aleatorios</h2>
+      <div class="box--randomDogs-pics">
+        <article class="box--randomDogs">
+          <img id="img1" alt="" />
+          <button class="favDogIn" id="btnRandom1">Add to fav</button>
+        </article>
+
+        <article>
+          <img id="img2" alt="" />
+          <button class="favDogIn" id="btnRandom2">Add to fav</button>
+        </article>
+
+        <article>
+          <img id="img3" alt="" />
+          <button class="favDogIn" id="btnRandom3">Add to fav</button>
+        </article>
+        <article>
+          <img id="img4" alt="" />
+          <button class="favDogIn" id="btnRandom4">Add to fav</button>
+        </article>
+      </div>
+      <button class="load" onclick="loadRandomPerritos()">
+        Load more pics!
+      </button>
+    </section>
+    <section class="box--uploadPics" id="uploadPerrito">
+      <h2>Upload pictures of your dog!</h2>
+      <form id="uploadingForm">
+        <input type="file" id="file" name="file" />
+        <button type="button" onclick="uploadPerritoFoto()">Upload pic!</button>
+      </form>
+    </section>
+    <div class="box--favoritesPics">
+      <h2>Favorite dogs</h2>
+      <section id="favoritesDogs"></section>
+    </div>
+    <footer class="box--footer">Made by @GuadalupeG🐰</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
