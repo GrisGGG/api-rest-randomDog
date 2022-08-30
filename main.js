@@ -1,12 +1,12 @@
 //Instancia de axios
 const api = axios.create({
     baseURL: 'https://api.thedogapi.com/v1',
-    headers: { 'x-api-key' : '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad'}
+    headers: { 'x-api-key': '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad' }
 });
 //Configuraciones de la api
 const API_URL_RANDOM = 'https://api.thedogapi.com/v1/images/search?limit=4';
 const API_URL_FAVORITES = 'https://api.thedogapi.com/v1/favourites';
-const API_URL_FAVORITES_DELETE = (id)=> `https://api.thedogapi.com/v1/favourites/${id}`;
+const API_URL_FAVORITES_DELETE = (id) => `https://api.thedogapi.com/v1/favourites/${id}`;
 const API_URL_UPLOAD = 'https://api.thedogapi.com/v1/images/upload';
 
 //Elemento de error
@@ -19,12 +19,12 @@ fetch(URL)// fetch nos devuelve una promesa y las promesas podemos resolverlas c
         img.src= data.message; //cambiamos el atributo src a la imágen de la api que esta en el atributo message
     });
 */
-async function loadRandomPerritos(){
+async function loadRandomPerritos() {
     const res = await fetch(API_URL_RANDOM)// La promesa que devuelve ferch se guarda en una constante llamada res, como esta variable tiene un llamada asincrono, le colocamos la palabra await
     const data = await res.json() // llamado asincrono del llamado json de nuestra respuesta
-    if(res.status !== 200){
-        spanError.innerHTML= 'Hubo un error Random' + res.status
-    }else{
+    if (res.status !== 200) {
+        spanError.innerHTML = 'Hubo un error Random' + res.status
+    } else {
         const img = document.getElementById('img1');
         const img1 = document.getElementById('img2');
         const img2 = document.getElementById('img3');
@@ -37,27 +37,27 @@ async function loadRandomPerritos(){
         img1.src = data[1].url
         img2.src = data[2].url;
         img3.src = data[3].url;
-        btnRandom1.onclick = ()=> saveFavouritesPerritos(data[0].id)
-        btnRandom2.onclick = ()=> saveFavouritesPerritos(data[1].id)
-        btnRandom3.onclick = ()=> saveFavouritesPerritos(data[2].id)   
-        btnRandom4.onclick = ()=> saveFavouritesPerritos(data[3].id) 
+        btnRandom1.onclick = () => saveFavouritesPerritos(data[0].id)
+        btnRandom2.onclick = () => saveFavouritesPerritos(data[1].id)
+        btnRandom3.onclick = () => saveFavouritesPerritos(data[2].id)
+        btnRandom4.onclick = () => saveFavouritesPerritos(data[3].id)
 
-        
-    } 
+
+    }
 }
 
 
-async function favoritesPerritos(){
+async function favoritesPerritos() {
     const res = await fetch(API_URL_FAVORITES, {
         method: 'GET',
-        headers:{
-            'x-api-key' : '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad'
+        headers: {
+            'x-api-key': '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad'
         },
     })// La promesa que devuelve ferch se guarda en una constante llamada res, como esta cariable tiene un llamada asincrono, le colocamos la palabra await
     const data = await res.json() // llamado asincrono del llamado json de nuestra respuesta
-    if( res.status !== 200){
+    if (res.status !== 200) {
         spanError.innerHTML = "Hubo un error" + res.status;
-    }else{
+    } else {
         const section = document.getElementById('favoritesDogs');
         section.innerHTML = ""
         const h2 = document.createElement('h2')
@@ -69,14 +69,14 @@ async function favoritesPerritos(){
             const article = document.createElement('article');
             const img = document.createElement('img');
             const btn = document.createElement('button');
-            const btnText = document.createTextNode('Quitar perrito de 💖');
+            const btnText = document.createTextNode('Remove 💖');
 
             img.src = perrito.image.url;
             img.width = 200;
             img.height = 250;
             btn.appendChild(btnText);
             btn.onclick = () => deleteFavoritesPerritos(perrito.id)
-           
+
             article.appendChild(img);
             article.appendChild(btn);
             section.appendChild(article)
@@ -84,8 +84,8 @@ async function favoritesPerritos(){
     }
 }
 
-async function saveFavouritesPerritos(id){
-    const {data, status} = await api.post('/favourites', {
+async function saveFavouritesPerritos(id) {
+    const { data, status } = await api.post('/favourites', {
         image_id: id
     });
 
@@ -101,37 +101,37 @@ async function saveFavouritesPerritos(id){
     // });
     // const data = await res.json();
     // console.log(res);``
-    if(status !== 200){
+    if (status !== 200) {
         console.log(status + "más" + data.message);
     }
     console.log(data);
     favoritesPerritos()
-  
+
 }
 
-async function deleteFavoritesPerritos(id){
+async function deleteFavoritesPerritos(id) {
     const res = await fetch(API_URL_FAVORITES_DELETE(id), {
         method: 'DELETE',
-        headers:{
-            'x-api-key' : '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad'
+        headers: {
+            'x-api-key': '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad'
         }
     })
     const data = await res.json()
-    if(res.status !== 200){
+    if (res.status !== 200) {
         console.log(res.status + "delete" + data.message);
-    }else{
+    } else {
         console.log("Elemento borrado");
         favoritesPerritos()
-    } 
+    }
 }
-async function uploadPerritoFoto(){
+async function uploadPerritoFoto() {
     const form = document.getElementById('uploadingForm')
     const formData = new FormData(form);
     const res = await fetch(API_URL_UPLOAD, {
         method: 'POST',
-        headers:{
-            'x-api-key' : '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad'
-        }, 
+        headers: {
+            'x-api-key': '7d61f0a3-e3c3-4c2c-84c5-0c5b32d127ad'
+        },
         body: formData,
     })
     const data = await res.json()
