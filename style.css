@@ -7,27 +7,24 @@
 body{
     background-color: #f3f3f3;
     font-family: 'Josefin Sans', sans-serif;
+    width: 100vw;
 }
 h1,h2{
     text-align: center;
     padding: .3em 0;
 }
+h1{
+    position: fixed;
+    width: 100%;
+}
 .box--title-color{
     background-color: rgb(225, 221, 225);
-}
-.box--banner{
-    width: 100vw;
-    height: 70vh;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-image: url('./assets/banner.jpg');
 }
 #randomDogs, .box--favoritesPics, .box--footer {
     width: 100vw;
     min-width: 360px;
     height: max-content;
-    padding: 3em;
+    padding: 3em 0;
     display: flex;
     flex-direction: column;
 }
@@ -143,6 +140,7 @@ article .favDogIn:active{
 @media (max-width: 600px) {
     .box--randomDogs-pics {
         flex-direction: column;
+        align-items: center;
     } 
    .box--randomDogs-pics article{
         margin-top: 3em;
@@ -151,5 +149,9 @@ article .favDogIn:active{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         grid-auto-rows: minmax(300px, auto);
+    }
+    .randomPics{
+        height: 160px;
+        width: 200px;
     }
 }
